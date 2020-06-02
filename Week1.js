@@ -35,15 +35,24 @@ var singleNumber = function (nums) {
 //  Output: true
 
 //    Explanation:
-//    12 + 92 = 82
-//    82 + 22 = 68
-//    62 + 82 = 100
-//    12 + 02 + 02 = 1
+//    1*1 + 9*9 = 82
+//    8*8 + 2*2 = 68
+//    6*6 + 8*8 = 100
+//    1*1 + 0*0 + 0*0 = 1
 
 // /**
 //  * @param {number} n
 //  * @return {boolean}
 //  */
 var isHappy = function (n) {
+  
 
 };
+function squareDigits(num) {
+  let sqaureSum = 0;
+  while (num > 9) {
+    let digit = num % 10;
+    sqaureSum += digit * digit;
+  }
+  
+}
