@@ -23,26 +23,43 @@
 // A   L S  I G
 // Y A   H R
 // P     I
-var convert = function (s, numRows) {
+let convert = function (str, numRows) {
 
-  var length = s.length;
-  console.log("length", length);
-  if (numRows == 1) return s;
-  var cycleLen = numRows * 2 - 2;
-  console.log("cycleLen", cycleLen);
-  var aZig = [];
-  for (var i = 0; i < numRows; i++) {
-    for (var j = 0; j + i < length; j = j + cycleLen) {
-      console.log("i, j :", i , j);
-      aZig.push(s.charAt(j + i));
-      if (i != 0 && i != numRows - 1 && j + cycleLen - i < length) {
-        aZig.push(s.charAt(j + cycleLen - i));
+  if (numRows == 1) return str;
+
+  let len = str.length;
+  let result = [];
+  let step = numRows * 2 - 2;
+
+  for (let i = 0; i < numRows; i++) {
+    for (let j = 0; j + i < len; j += step) {
+      result.push(str.charAt(j + i));
+      if (i != 0 && i != numRows - 1 && j + step - i < len) {
+        result.push(str.charAt(j + step - i));
       }
     }
   }
 
-  return aZig.join("");
+  return result.join("");
 };
 
 // console.log(convert("PAYPALISHIRING",4));
 console.log(convert("PAYPALISHIRING",3))
+
+// length 14
+// cycleLen 4
+// i, j j + i : 0 0 0
+// i, j j + i : 0 4 4
+// i, j j + i : 0 8 8
+// i, j j + i : 0 12 12
+// i, j j + i : 1 0 1
+// inside 3
+// i, j j + i : 1 4 5
+// inside 7
+// i, j j + i : 1 8 9
+// inside 11
+// i, j j + i : 1 12 13
+// i, j j + i : 2 0 2
+// i, j j + i : 2 4 6
+// i, j j + i : 2 8 10
+// PAHNAPLSIIGYIR
