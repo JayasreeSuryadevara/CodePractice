@@ -27,16 +27,19 @@ let convert = function (str, numRows) {
 
   if (numRows == 1) return str;
 
-  let len = str.length;
-  let result = [];
-  let step = numRows * 2 - 2;
+  const len = str.length;
+  const result = [];
+  const step = numRows * 2 - 2;
 
   for (let i = 0; i < numRows; i++) {
     for (let j = 0; j + i < len; j += step) {
+
       result.push(str.charAt(j + i));
+
       if (i != 0 && i != numRows - 1 && j + step - i < len) {
         result.push(str.charAt(j + step - i));
       }
+
     }
   }
 
