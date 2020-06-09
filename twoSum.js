@@ -6,16 +6,24 @@
 // Given nums = [2, 7, 11, 15], target = 9,
 //   Because nums[0] + nums[1] = 2 + 7 = 9,
 // return [0, 1].
+var twoSum = function (nums, target) {
 
-function twoSum(nums, target) {
-  const map = {};
-  for (let i = 0; i < nums.length; i++){
-    const another = target - nums[i];
-    if (another in map) return [map[another], i];
-    map[nums[i]] = i;
+  let memo = {};
+
+  for (let i = 0; i < nums.length; i++) {
+
+    let another = target - nums[i];
+
+    if (another in memo) {
+
+      return [memo[another], i];
+    }
+
+    memo[nums[i]] = i;
+
   }
-  return null;
-}
+
+};
 
 
 console.log(twoSum([2, 7, 11, 15], 9));
