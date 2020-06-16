@@ -1,53 +1,47 @@
 // The string "PAYPALISHIRING" is written in a zigzag pattern on a given number 
 // of rows like this: (you may want to display this pattern in a fixed font for better legibility)
-
-//   P   A   H   N
-// A P L S I I G
-// Y   I   R
+//   P     A     H     N
+//   A  P  L  S  I  I  G
+//   Y     I     R
 // And then read line by line: "PAHNAPLSIIGYIR"
-
 // Write the code that will take a string and make this conversion given a number of rows:
-
 // string convert(string s, int numRows);
 // Example 1:
-
 // Input: s = "PAYPALISHIRING", numRows = 3
 // Output: "PAHNAPLSIIGYIR"
 // Example 2:
-
 // Input: s = "PAYPALISHIRING", numRows = 4
 // Output: "PINALSIGYAHRPI"
 // Explanation:
-
 // P     I    N
 // A   L S  I G
 // Y A   H R
 // P     I
-let convert = function (str, numRows) {
+let convert = function(str, numRows) {
 
-  if (numRows == 1) return str;
+    if (numRows == 1) return str;
 
-  const len = str.length;
-  const result = [];
-  const step = numRows * 2 - 2;
+    const len = str.length;
+    const result = [];
+    const step = numRows * 2 - 2;
 
-  for (let i = 0; i < numRows; i++) {
-    for (let j = 0; j + i < len; j += step) {
+    for (let i = 0; i < numRows; i++) {
+        for (let j = 0; j + i < len; j += step) {
 
-      result.push(str.charAt(j + i));
+            result.push(str.charAt(j + i));
 
-      if (i != 0 && i != numRows - 1 && j + step - i < len) {
-        result.push(str.charAt(j + step - i));
-      }
+            if (i != 0 && i != numRows - 1 && j + step - i < len) {
+                result.push(str.charAt(j + step - i));
+            }
 
+        }
     }
-  }
 
-  return result.join("");
+    return result.join("");
 };
 
 // console.log(convert("PAYPALISHIRING",4));
-console.log(convert("PAYPALISHIRING",3))
+console.log(convert("PAYPALISHIRING", 3))
 
 // length 14
 // cycleLen 4
@@ -66,3 +60,27 @@ console.log(convert("PAYPALISHIRING",3))
 // i, j j + i : 2 4 6
 // i, j j + i : 2 8 10
 // PAHNAPLSIIGYIR
+
+var convert = function(s, numRows) {
+    let arr = [];
+    let step = 1;
+    let index = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        if (arr[index] === undefined) {
+            arr[index] = "";
+        }
+
+        arr[index] += s[i];
+
+        if (index === 0) {
+            step = 1;
+        } else if (index === numRows - 1) {
+            step = -1;
+        }
+
+        index += step;
+    }
+
+    return arr.join("");
+};
