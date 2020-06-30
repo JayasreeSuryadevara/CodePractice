@@ -19,4 +19,4 @@ var numPairsDivisibleBy60 = function(time) {
 
 };
 
-print(numPairsDivisibleBy60([30,20,150,100,40]);
+console.log(numPairsDivisibleBy60([30,20,150,100,40]));

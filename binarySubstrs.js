@@ -19,3 +19,17 @@
 
 // s.length will be between 1 and 50, 000.
 // s will only consist of "0" or "1" characters.
+
+const countBinarySubstrings = s => {
+  const substrs = s.match(/(.)(\1)*/g)
+  // console.log(substrs)
+  let total = 0
+  for (let i = 1; i < substrs.length; i++) {
+    total += Math.min(substrs[i].length, substrs[i - 1].length)
+  }
+  return total
+};
+
+
+console.log(countBinarySubstrings("00110011")) //6
+console.log(countBinarySubstrings("10101")) //4
